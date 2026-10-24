@@ -1,23 +1,24 @@
 # SEER AI — Multi-Agent Software Engineering Intelligence Platform
 
-**SEER AI** is an AI-powered software engineering intelligence platform designed to help development teams understand repositories, analyze software architecture, manage project backlogs, assess risks, and generate software documentation and user stories.
+SEER AI is an AI-powered software engineering intelligence platform designed to help development teams analyze code repositories, understand software architecture, manage project backlogs, identify risks, and generate software documentation and Jira user stories.
 
-The platform integrates repository analysis, project management workflows, and AI-driven insights into a unified workspace.
+The platform brings repository analysis, project management integrations, and AI-powered insights together in a centralized workspace.
 
-## ✨ Key Features
+## ✨ Features
 
-- **Project Management:** Create and manage projects from a centralized dashboard.
-- **GitHub Integration:** Connect repositories and analyze codebases to understand project structure.
-- **Architecture Visualization:** Explore software architecture and repository components.
-- **Jira Integration:** Connect Jira projects and access project-related information.
-- **Backlog Management:** Organize and review project backlog items.
-- **Jira Timeline:** View project activities and timeline-related information.
-- **AI Insights:** Generate AI-assisted insights to support software development decisions.
-- **Risk Analysis:** Identify potential project and software risks.
-- **SRS Generation:** Generate Software Requirements Specification (SRS) documents.
-- **Jira Story Drafting:** Assist with drafting user stories from project requirements.
-- **Authentication:** Protect application routes with authentication.
-- **Responsive Interface:** Provide a consistent interface across supported screen sizes.
+- **Project Management:** Create, organize, and manage software projects.
+- **GitHub Integration:** Connect GitHub repositories and analyze codebases.
+- **Repository Analysis:** Explore repository structures and software components.
+- **Architecture Visualization:** Visualize and understand software architecture.
+- **Jira Integration:** Connect Jira and access project-related information.
+- **Backlog Management:** View and manage project backlog items.
+- **Jira Timeline:** Explore project activities and timeline information.
+- **AI Insights:** Generate AI-assisted insights for software engineering workflows.
+- **Risk Analysis:** Analyze potential project and software risks.
+- **SRS Generation:** Generate Software Requirements Specification documents.
+- **Jira Story Generation:** Assist with creating Jira story drafts from project requirements.
+- **Authentication:** Secure application routes using Okta authentication.
+- **Responsive UI:** Access the platform through a consistent, responsive interface.
 
 ## 🛠️ Technology Stack
 
@@ -28,26 +29,26 @@ The platform integrates repository analysis, project management workflows, and A
 - Tailwind CSS
 - React Router
 - Lucide React
-- Okta React / Okta Auth JS
+- Okta React
+- Okta Auth JS
 
 ### Backend
 - Python
-- FastAPI or the backend framework configured in the project
-- REST API services
+- FastAPI
+- Uvicorn
+- REST APIs
 
 ### Integrations and AI
 - GitHub API
 - Jira API
-- Google Gemini or the configured AI provider
 - Okta authentication
+- Google Gemini or the configured AI provider
 
 ### Development Tools
 - Git and GitHub
 - Visual Studio Code
 - npm
 - Python virtual environments
-
-> The exact dependencies and supported versions are defined in the project's package and Python dependency files.
 
 ## 📁 Project Structure
 
@@ -66,6 +67,7 @@ SEER_AI/
 │   ├── risk_analysis.py
 │   ├── srs_documents.py
 │   └── jira_story_drafts.py
+│
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
@@ -76,20 +78,23 @@ SEER_AI/
 │   │   └── index.css
 │   ├── package.json
 │   └── index.html
+│
 ├── .gitignore
 └── README.md
 ```
 
-*The structure above is representative. Some files or directories may differ in your current version.*
+*This is a representative structure; the actual files may vary as the project evolves.*
 
 ## ⚙️ Prerequisites
 
-Install the following before running the application:
+Before running the project, ensure you have installed:
 
-- Node.js and npm
-- Python 3.10 or a version supported by the backend dependencies
-- Git
-- Access credentials for the integrations you intend to use, such as GitHub, Jira, Okta, and an AI provider
+- [Python](https://www.python.org/downloads/)
+- [Node.js and npm](https://nodejs.org/)
+- [Git](https://git-scm.com/downloads)
+- A code editor such as Visual Studio Code
+
+You may also need credentials for GitHub, Jira, Okta, and the configured AI provider.
 
 ## 🚀 Getting Started
 
@@ -100,47 +105,71 @@ git clone https://github.com/23it101PopatHemangi/SEER_AI_-Multi-agent_SE_Intelli
 cd SEER_AI_-Multi-agent_SE_Intelligence_Platform
 ```
 
-### 2. Set Up the Backend
+### 2. Run the Backend
 
-Open a terminal in the project root:
+Open a terminal in the project root and navigate to the backend directory:
 
 ```powershell
 cd backend
-python -m venv venv
 ```
 
-Activate the virtual environment on Windows:
+#### Activate the virtual environment
+
+If the `.venv` folder already exists:
 
 ```powershell
-.\venv\Scripts\Activate.ps1
+.\.venv\Scripts\Activate.ps1
 ```
 
-Install dependencies using the dependency file available in the backend. For example, if `requirements.txt` exists:
+If the `.venv` folder does not exist, create and activate it:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+#### Install dependencies
+
+With the virtual environment activated:
 
 ```powershell
 pip install -r requirements.txt
 ```
 
-Configure the required environment variables using a local `.env` file, based on the variables expected by the application.
-
-Start the backend using the entry point configured in `backend/main.py`. For example, if it exposes a FastAPI application named `app`:
+If activation fails but the `.venv` folder exists, install dependencies directly through its Python executable:
 
 ```powershell
-uvicorn main:app --reload
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
 
-The API documentation may be available at `http://127.0.0.1:8000/docs` if FastAPI's documentation routes are enabled.
+#### Start the backend server
 
-### 3. Set Up the Frontend
+```powershell
+python -m uvicorn main:app --reload --port 8000
+```
 
-Open a second terminal in the project root:
+The backend will be available at:
+
+- **Backend API:** http://localhost:8000
+- **API documentation:** http://localhost:8000/docs (if enabled)
+
+Keep this terminal running while using the application.
+
+### 3. Run the Frontend
+
+Open a **second terminal** in the project root.
+
+Navigate to the frontend directory:
 
 ```powershell
 cd frontend
-npm install
 ```
 
-Configure the frontend environment variables required by the application in a local `.env` file.
+Install frontend dependencies:
+
+```powershell
+npm install
+```
 
 Start the development server:
 
@@ -148,98 +177,128 @@ Start the development server:
 npm run dev
 ```
 
-Open the local URL printed by Vite in your terminal, commonly `http://localhost:5173`.
+Open the local URL displayed in the terminal, usually:
 
-> Startup commands, ports, environment variable names, and dependency installation instructions should be adjusted to match the actual project configuration.
+**http://localhost:5173**
+
+Keep this terminal running as well.
 
 ## 🔐 Environment Configuration
 
-The application may require configuration for:
+The application may require environment variables for:
 
 - Backend API URL
 - Okta issuer, client ID, and redirect URI
-- GitHub OAuth application credentials
+- GitHub OAuth client ID and secret
 - Jira OAuth credentials and callback URL
 - AI provider API key
 - Database connection settings
 
-Use local environment files and keep them out of version control.
+Create local `.env` files in the appropriate directories and use the variable names expected by the application.
 
 **Security guidelines:**
-- Never commit API keys, OAuth client secrets, access tokens, passwords, or database credentials.
-- Never put private credentials in frontend variables; frontend variables can be exposed to browser users.
-- Configure OAuth redirect URLs in the relevant provider dashboards.
-- Use `.gitignore` to exclude local environment files.
+
+- Never commit `.env` files containing credentials.
+- Never commit API keys, passwords, OAuth client secrets, access tokens, or database credentials.
+- Never expose private credentials through frontend environment variables.
+- Ensure `.env` and other secret files are excluded by `.gitignore`.
 - Rotate any credentials that may have been exposed in a repository.
 
-## 🔄 Development Workflow
+## 🔄 Git Workflow
 
-The project uses Git for version control.
+The project uses Git for version control and collaborative development.
+
+Check the current working tree:
 
 ```bash
 git status
+```
+
+Stage only the intended files:
+
+```bash
 git add <specific-files>
-git commit -m "type: describe your change"
+```
+
+Create a commit:
+
+```bash
+git commit -m "type: describe your changes"
+```
+
+Synchronize with the remote repository before pushing:
+
+```bash
 git pull --rebase origin main
 git push origin main
 ```
 
-Use meaningful commit messages such as:
+Since multiple contributors work on `main`, synchronize regularly and resolve any merge conflicts carefully. Avoid force-pushing shared history.
 
-- `feat: implement GitHub repository services`
-- `feat: add Jira OAuth integration`
-- `feat: implement risk analysis engine`
-- `feat: add SRS and Jira story generation`
-- `fix: handle repository connection errors`
-- `docs: update project setup instructions`
+### Example Commit Messages
 
-Since multiple contributors work on `main`, synchronize with the remote repository before pushing. Resolve conflicts carefully and avoid force-pushing shared history.
+```text
+feat: implement GitHub repository services
+feat: add Jira OAuth integration
+feat: implement risk analysis engine
+feat: add SRS and Jira story generation
+feat: improve responsive layout and UI consistency
+docs: update project README
+fix: handle repository connection errors
+```
 
-## 🧪 Testing
+## 🧪 Testing and Build
 
-Run the tests configured for each application component.
+### Frontend build
 
-For the frontend, check the scripts in `frontend/package.json`. A test or build command may be available, for example:
+From the frontend directory:
 
-```bash
+```powershell
 npm run build
 ```
 
-For the backend, run the test command configured by the project. If pytest is installed and tests exist:
+This runs the build script defined in `frontend/package.json`, if configured.
 
-```bash
+### Backend tests
+
+From the backend directory, if pytest and project tests are available:
+
+```powershell
 python -m pytest
 ```
 
-## 🎯 Project Goals
+Review any test failures before deploying changes.
+
+## 🎯 Project Objectives
 
 SEER AI aims to:
 
 - Reduce manual effort in software project analysis.
-- Improve visibility into repository structure and architecture.
+- Improve visibility into codebases and software architecture.
 - Support project planning and risk assessment.
-- Accelerate requirements documentation and user-story preparation.
-- Bring development intelligence and project management workflows together.
+- Accelerate software documentation and user-story creation.
+- Integrate development workflows with GitHub and Jira.
+- Provide AI-assisted intelligence for software engineering teams.
 
 ## 🔮 Future Enhancements
 
 Potential future improvements include:
 
 - More advanced multi-agent collaboration.
-- Improved code dependency and architecture analysis.
-- Automated risk detection and prioritization.
-- Enhanced AI-generated documentation.
-- Expanded testing, monitoring, and deployment workflows.
+- Deeper code dependency and architecture analysis.
+- Improved automated risk detection.
+- Enhanced documentation and user-story generation.
+- Expanded testing, monitoring, and deployment support.
 
 ## 👥 Contributors
 
 Developed collaboratively as a software engineering project.
 
-Add contributor names and links to their GitHub profiles here.
+Add contributor names and GitHub profile links here.
 
 ## 📄 License
 
-No license has been specified in this README. Add an appropriate license before distributing or reusing the project publicly.
+A license has not yet been specified. Add an appropriate license before distributing or reusing this project publicly.
 
 ---
 
