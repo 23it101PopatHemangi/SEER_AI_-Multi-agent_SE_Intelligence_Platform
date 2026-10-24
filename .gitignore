@@ -1,0 +1,22 @@
+=
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Local database and generated cache
+backend/cache/
+backend/seer_ai.db
+*.db
+*.sqlite
+*.sqlite3
+
+# Frontend dependencies and build output
+frontend/node_modules/
+frontend/dist/
+
+# Python generated files
+__pycache__/
+*.py[cod]
+.venv/
+venv/
